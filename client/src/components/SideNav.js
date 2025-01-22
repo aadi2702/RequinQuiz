@@ -23,7 +23,7 @@ const SideNav = ({ isOpen, onClose }) => {
             <li><Link to="/services" className="hover:text-black">Services</Link></li>
             <li><Link to="/career" className="hover:text-black">Career</Link></li>
             <li><Link to="/blog" className="hover:text-black">Blog</Link></li> */}
-            <li><Link to="/about" className="hover:text-black">About Us</Link></li>
+            <li><Link to="/aboutus" className="hover:text-black">About Us</Link></li>
             <li><Link to="/contact" className="hover:text-black">Contact</Link></li>
             {/* <li><Link to="/termsandconditions" className="hover:text-black">Terms and Conditions</Link></li> */}
             </ul>
