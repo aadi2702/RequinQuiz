@@ -24,7 +24,7 @@ app.get(
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", // Frontend URL
+    origin: "https://requin-quiz.vercel.app", // Frontend URL
     credentials: true, // Enable cookies
   })
 );
