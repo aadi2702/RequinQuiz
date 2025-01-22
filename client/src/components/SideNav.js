@@ -19,13 +19,13 @@ const SideNav = ({ isOpen, onClose }) => {
           <button className="text-xl hover:text-black" onClick={onClose}>×</button>
           <nav>
             <ul className="mt-10 space-y-2">
-            <li><Link to="/home" className="hover:text-black">Home</Link></li>
+            {/* <li><Link to="/home" className="hover:text-black">Home</Link></li>
             <li><Link to="/services" className="hover:text-black">Services</Link></li>
             <li><Link to="/career" className="hover:text-black">Career</Link></li>
-            <li><Link to="/blog" className="hover:text-black">Blog</Link></li>
+            <li><Link to="/blog" className="hover:text-black">Blog</Link></li> */}
             <li><Link to="/about" className="hover:text-black">About Us</Link></li>
             <li><Link to="/contact" className="hover:text-black">Contact</Link></li>
-            <li><Link to="/termsandconditions" className="hover:text-black">Terms and Conditions</Link></li>
+            {/* <li><Link to="/termsandconditions" className="hover:text-black">Terms and Conditions</Link></li> */}
             </ul>
           </nav>
         </div>
