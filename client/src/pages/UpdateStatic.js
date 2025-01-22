@@ -37,7 +37,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 
 //         // Ensure proper structure and data presence
 //         if (response.data.success && Array.isArray(response.data.data)) {
@@ -113,7 +113,7 @@
 //       };
 
 //       await axios.put(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/question/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/question/${editingQuestion.id}`,
 //         updatedQuestionData,
 //         {
 //           withCredentials: true,
@@ -124,7 +124,7 @@
 //       );
 
 //       // Refresh static questions after update
-//       const response = await axios.get("http://localhost:5000/api/quiz/static");
+//       const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //       if (response.data.success) {
 //         const allQuestions = response.data.data.flatMap((quiz) =>
 //           quiz.questions.map((q) => ({
@@ -179,7 +179,7 @@
 //     setLoading(true);
 //     try {
 //       await axios.delete(
-//         `http://localhost:5000/api/quiz/static/${quizId}/question/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/question/${questionId}`,
 //         {
 //           withCredentials: true,
 //         }
@@ -398,7 +398,7 @@
 //       setError(null);
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -587,7 +587,7 @@
 //       setError(null);
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -650,7 +650,7 @@
 //     try {
 //       // Send DELETE request to the backend
 //       await axios.delete(
-//         `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
 //         {
 //           withCredentials: true,
 //         }
@@ -826,7 +826,7 @@
 //       setError(null);
 //       try {
 //         const response = await fetch(
-//           "http://localhost:5000/api/quiz/static",
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static",
 //           {
 //             credentials: 'include'
 //           }
@@ -924,7 +924,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: 'PUT',
 //           headers: {
@@ -977,7 +977,7 @@
 //     setLoading(true);
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
 //         {
 //           method: 'DELETE',
 //           credentials: 'include'
@@ -1225,7 +1225,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: 'PUT',
 //           headers: {
@@ -1408,7 +1408,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await fetch("http://localhost:5000/api/quiz/static", {
+//         const response = await fetch("https://requin-quiz-backend.vercel.app/api/quiz/static", {
 //           credentials: "include",
 //         });
 
@@ -1505,7 +1505,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: "PUT",
 //           headers: {
@@ -1705,7 +1705,7 @@
 //       setError(null);
 //       try {
 //         const response = await fetch(
-//           "http://localhost:5000/api/quiz/static",
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static",
 //           {
 //             credentials: 'include'
 //           }
@@ -1809,7 +1809,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: 'PUT',
 //           headers: {
@@ -1860,7 +1860,7 @@
 //     setLoading(true);
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
 //         {
 //           method: 'DELETE',
 //           credentials: 'include'
@@ -2134,7 +2134,7 @@
 //       setError(null);
 //       try {
 //         const response = await fetch(
-//           "http://localhost:5000/api/quiz/static",
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static",
 //           {
 //             credentials: 'include'
 //           }
@@ -2237,7 +2237,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: 'PUT',
 //           headers: {
@@ -2288,7 +2288,7 @@
 //     setLoading(true);
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
 //         {
 //           method: 'DELETE',
 //           credentials: 'include'
@@ -2560,7 +2560,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await fetch("http://localhost:5000/api/quiz/static", {
+//         const response = await fetch("https://requin-quiz-backend.vercel.app/api/quiz/static", {
 //           credentials: "include",
 //         });
 
@@ -2671,7 +2671,7 @@
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: "PUT",
 //           headers: {
@@ -2726,7 +2726,7 @@
 //     setLoading(true);
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
 //         {
 //           method: "DELETE",
 //           credentials: "include",
@@ -2964,7 +2964,6 @@
 // };
 
 // export default UpdateStatic;
-  
 
 import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
@@ -3014,9 +3013,12 @@ const UpdateStatic = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch("http://localhost:5000/api/quiz/static", {
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://requin-quiz-backend.vercel.app/api/quiz/static",
+          {
+            credentials: "include",
+          }
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -3065,9 +3067,12 @@ const UpdateStatic = () => {
   useEffect(() => {
     if (selectedSubjectCode) {
       const subjectQuestions = staticQuestions.filter(
-        (q) => q.college === selectedCollege && q.subjectCode === selectedSubjectCode
+        (q) =>
+          q.college === selectedCollege && q.subjectCode === selectedSubjectCode
       );
-      const availableCategories = [...new Set(subjectQuestions.map((q) => q.category))];
+      const availableCategories = [
+        ...new Set(subjectQuestions.map((q) => q.category)),
+      ];
       setCategories(availableCategories.filter(Boolean));
       setSelectedCategory(""); // Reset category when subject code changes
     } else {
@@ -3094,8 +3099,8 @@ const UpdateStatic = () => {
   const handleSubjectCodeChange = (subjectCode) => {
     setSelectedSubjectCode(subjectCode);
     const filtered = staticQuestions.filter(
-      (q) => 
-        q.college === selectedCollege && 
+      (q) =>
+        q.college === selectedCollege &&
         q.subjectCode === subjectCode &&
         (!selectedCategory || q.category === selectedCategory)
     );
@@ -3106,8 +3111,8 @@ const UpdateStatic = () => {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     const filtered = staticQuestions.filter(
-      (q) => 
-        q.college === selectedCollege && 
+      (q) =>
+        q.college === selectedCollege &&
         q.subjectCode === selectedSubjectCode &&
         (!category || q.category === category)
     );
@@ -3156,7 +3161,7 @@ const UpdateStatic = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
         {
           method: "PUT",
           headers: {
@@ -3212,7 +3217,7 @@ const UpdateStatic = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
         {
           method: "DELETE",
           credentials: "include",
@@ -3476,7 +3481,7 @@ export default UpdateStatic;
 // import React, { useEffect, useState } from "react";
 // import Sidebar from "../components/Sidebar";
 // import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css"; 
+// import "react-quill/dist/quill.snow.css";
 
 // const UpdateStatic = () => {
 //   const [staticQuestions, setStaticQuestions] = useState([]);
@@ -3521,7 +3526,7 @@ export default UpdateStatic;
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await fetch("http://localhost:5000/api/quiz/static", {
+//         const response = await fetch("https://requin-quiz-backend.vercel.app/api/quiz/static", {
 //           credentials: "include",
 //         });
 
@@ -3576,7 +3581,7 @@ export default UpdateStatic;
 //       );
 //       const availableCategories = [...new Set(subjectQuestions.map((q) => q.category))];
 //       setCategories(availableCategories);
-      
+
 //       // Update filtered questions based on all current selections
 //       filterQuestions(selectedCollege, selectedSubjectCode, selectedCategory);
 //     } else {
@@ -3666,7 +3671,7 @@ export default UpdateStatic;
 
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${editingQuestion.quizId}/${editingQuestion.id}`,
 //         {
 //           method: "PUT",
 //           headers: {
@@ -3716,7 +3721,7 @@ export default UpdateStatic;
 //     setLoading(true);
 //     try {
 //       const response = await fetch(
-//         `http://localhost:5000/api/quiz/static/${quizId}/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/static/${quizId}/${questionId}`,
 //         {
 //           method: "DELETE",
 //           credentials: "include",
@@ -3730,7 +3735,7 @@ export default UpdateStatic;
 //       // Update both staticQuestions and filteredQuestions states
 //       const updatedStaticQuestions = staticQuestions.filter((q) => q.id !== questionId);
 //       setStaticQuestions(updatedStaticQuestions);
-      
+
 //       // Reapply filters to update the view
 //       filterQuestions(selectedCollege, selectedSubjectCode, selectedCategory);
 

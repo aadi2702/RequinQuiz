@@ -68,121 +68,121 @@
 //   };
 
 //   // Handle form submission
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
 
-  //   if (quizType === "static") {
-  //     // Case: File Upload
-  //     if (uploadOption === "file" && file) {
-  //       const formData = new FormData();
-  //       formData.append("file", file);
-  //       formData.append("university", university);
-  //       formData.append("subjectCode", subjectCode);
-  //       formData.append("category", category);
+//   if (quizType === "static") {
+//     // Case: File Upload
+//     if (uploadOption === "file" && file) {
+//       const formData = new FormData();
+//       formData.append("file", file);
+//       formData.append("university", university);
+//       formData.append("subjectCode", subjectCode);
+//       formData.append("category", category);
 
-  //       try {
-  //         const response = await axios.post(
-  //           "http://localhost:5000/api/quiz/upload", // Backend endpoint for file upload
-  //           formData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "multipart/form-data",
-  //             },
-  //           }
-  //         );
+//       try {
+//         const response = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/upload", // Backend endpoint for file upload
+//           formData,
+//           {
+//             headers: {
+//               "Content-Type": "multipart/form-data",
+//             },
+//           }
+//         );
 
-  //         // Now save the parsed questions to the database
-  //         const quizData = {
-  //           university,
-  //           subjectCode,
-  //           category,
-  //           questions: parsedQuestions, // Send the parsed questions to the backend
-  //         };
+//         // Now save the parsed questions to the database
+//         const quizData = {
+//           university,
+//           subjectCode,
+//           category,
+//           questions: parsedQuestions, // Send the parsed questions to the backend
+//         };
 
-  //         // Sending the parsed questions and other data to the server
-  //         const quizResponse = await axios.post(
-  //           "http://localhost:5000/api/quiz/manual", // Backend endpoint to save quiz data (adjust the endpoint if needed)
-  //           quizData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
+//         // Sending the parsed questions and other data to the server
+//         const quizResponse = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/manual", // Backend endpoint to save quiz data (adjust the endpoint if needed)
+//           quizData,
+//           {
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
 
-  //         alert("Quiz uploaded and saved successfully!");
-  //         console.log(quizResponse.data);
-  //       } catch (error) {
-  //         console.error(
-  //           "Error uploading file or saving quiz:",
-  //           error.response?.data || error.message
-  //         );
-  //         alert("Failed to upload quiz");
-  //       }
-  //     }
-  //     // Case: Manually Adding Questions
-  //     else if (uploadOption === "manual" && manualQuestions.length > 0) {
-  //       const manualData = {
-  //         university,
-  //         subjectCode,
-  //         category,
-  //         questions: manualQuestions,
-  //       };
+//         alert("Quiz uploaded and saved successfully!");
+//         console.log(quizResponse.data);
+//       } catch (error) {
+//         console.error(
+//           "Error uploading file or saving quiz:",
+//           error.response?.data || error.message
+//         );
+//         alert("Failed to upload quiz");
+//       }
+//     }
+//     // Case: Manually Adding Questions
+//     else if (uploadOption === "manual" && manualQuestions.length > 0) {
+//       const manualData = {
+//         university,
+//         subjectCode,
+//         category,
+//         questions: manualQuestions,
+//       };
 
-  //       try {
-  //         const response = await axios.post(
-  //           "http://localhost:5000/api/quiz/manual", // Backend endpoint for manual entry
-  //           manualData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
+//       try {
+//         const response = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/manual", // Backend endpoint for manual entry
+//           manualData,
+//           {
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
 
-  //         alert("Manual quiz created successfully!");
-  //         console.log(response.data);
-  //       } catch (error) {
-  //         console.error(
-  //           "Error submitting manual data:",
-  //           error.response?.data || error.message
-  //         );
-  //         alert("Failed to create quiz");
-  //       }
-  //     }
-  //     // Case: File Upload with parsed questions from the Excel file
-  //     else if (uploadOption === "file" && parsedQuestions.length > 0) {
-  //       const quizData = {
-  //         university,
-  //         subjectCode,
-  //         category,
-  //         questions: parsedQuestions, // Use the parsed questions here
-  //       };
+//         alert("Manual quiz created successfully!");
+//         console.log(response.data);
+//       } catch (error) {
+//         console.error(
+//           "Error submitting manual data:",
+//           error.response?.data || error.message
+//         );
+//         alert("Failed to create quiz");
+//       }
+//     }
+//     // Case: File Upload with parsed questions from the Excel file
+//     else if (uploadOption === "file" && parsedQuestions.length > 0) {
+//       const quizData = {
+//         university,
+//         subjectCode,
+//         category,
+//         questions: parsedQuestions, // Use the parsed questions here
+//       };
 
-  //       try {
-  //         const response = await axios.post(
-  //           "http://localhost:5000/api/quiz/upload  ", // Backend endpoint to save quiz data (adjust the endpoint if needed)
-  //           quizData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
+//       try {
+//         const response = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/upload  ", // Backend endpoint to save quiz data (adjust the endpoint if needed)
+//           quizData,
+//           {
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
 
-  //         alert("All quiz questions uploaded and saved successfully!");
-  //         console.log(response.data);
-  //       } catch (error) {
-  //         console.error(
-  //           "Error submitting quiz data:",
-  //           error.response?.data || error.message
-  //         );
-  //       }
-  //     } else {
-  //       alert("Please provide a file or enter a question and answer manually.");
-  //     }
-  //   }
-  // };
+//         alert("All quiz questions uploaded and saved successfully!");
+//         console.log(response.data);
+//       } catch (error) {
+//         console.error(
+//           "Error submitting quiz data:",
+//           error.response?.data || error.message
+//         );
+//       }
+//     } else {
+//       alert("Please provide a file or enter a question and answer manually.");
+//     }
+//   }
+// };
 
 //   return (
 //     <div className="flex min-h-screen bg-gradient-to-br from-gray-800 to-gray-900">
@@ -412,7 +412,7 @@
 //     const url = uploadOption === "file" ? "/api/quiz/upload" : "/api/quiz/manual";
 
 //     try {
-//       const response = await axios.post(`http://localhost:5000${url}`, quizData, {
+//       const response = await axios.post(`https://requin-quiz-backend.vercel.app${url}`, quizData, {
 //         headers: {
 //           "Content-Type": "application/json",
 //         },
@@ -642,7 +642,7 @@
 //     formData.append("university", university);
 //     formData.append("subjectCode", subjectCode);
 //     formData.append("category", category);
-    
+
 //     // Append the file if uploading via file option
 //     if (uploadOption === "file" && file) {
 //       formData.append("file", file);
@@ -654,7 +654,7 @@
 //     const url = uploadOption === "file" ? "/api/quiz/upload" : "/api/quiz/manual";
 
 //     try {
-//       const response = await axios.post(`http://localhost:5000${url}`, formData, {
+//       const response = await axios.post(`https://requin-quiz-backend.vercel.app${url}`, formData, {
 //         headers: {
 //           "Content-Type": "multipart/form-data", // Important for file upload
 //         },
@@ -867,116 +867,114 @@
 //     setManualQuestions([...manualQuestions, { question: "", answer: "" }]);
 //   };
 
+// const handleSubmit = async (e) => {
+//   e.preventDefault();
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  
-  //   if (quizType === "static") {
-  //     // Case: File Upload (with manual questions)
-  //     if (uploadOption === "file" && file) {
-  //       const formData = new FormData();
-  //       formData.append("file", file);
-  //       formData.append("university", university);
-  //       formData.append("subjectCode", subjectCode);
-  //       formData.append("category", category);
-  
-  //       try {
-  //         const fileUploadResponse = await axios.post(
-  //           "http://localhost:5000/api/quiz/upload", // Backend endpoint for file upload
-  //           formData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "multipart/form-data",
-  //             },
-  //           }
-  //         );
-  
-  //         // Now save the parsed questions to the database (assuming file parsing logic exists)
-  //         const quizData = {
-  //           university,
-  //           subjectCode,
-  //           category,
-  //           questions: parsedQuestions, // Send the parsed questions to the backend
-  //         };
-  
-  //         const saveQuizResponse = await axios.post(
-  //           "http://localhost:5000/api/quiz/manual", // Backend endpoint to save quiz data (adjust the endpoint if needed)
-  //           quizData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
-  
-  //         alert("Quiz uploaded and saved successfully!");
-  //         console.log(saveQuizResponse.data);
-  //       } catch (error) {
-  //         console.error("Error uploading file or saving quiz:", error.response?.data || error.message);
-  //         alert("Failed to upload quiz");
-  //       }
-  //     }
-  
-  //     // Case: Manually Adding Questions (without file)
-  //     else if (uploadOption === "manual" && manualQuestions.length > 0) {
-  //       const manualData = {
-  //         university,
-  //         subjectCode,
-  //         category,
-  //         questions: manualQuestions,
-  //       };
-  
-  //       try {
-  //         const manualSaveResponse = await axios.post(
-  //           "http://localhost:5000/api/quiz/manual", // Backend endpoint for manual entry
-  //           manualData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
-  
-  //         alert("Manual quiz created successfully!");
-  //         console.log(manualSaveResponse.data);
-  //       } catch (error) {
-  //         console.error("Error submitting manual data:", error.response?.data || error.message);
-  //         alert("Failed to create quiz");
-  //       }
-  //     }
-  
-  //     // Case: If user uploads file with parsed questions (but no manual data)
-  //     else if (uploadOption === "file" && parsedQuestions.length > 0) {
-  //       const quizData = {
-  //         university,
-  //         subjectCode,
-  //         category,
-  //         questions: parsedQuestions, // Use the parsed questions here
-  //       };
-  
-  //       try {
-  //         const parsedQuizSaveResponse = await axios.post(
-  //           "http://localhost:5000/api/quiz/upload", // Backend endpoint to save quiz data (adjust the endpoint if needed)
-  //           quizData,
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
-  
-  //         alert("All quiz questions uploaded and saved successfully!");
-  //         console.log(parsedQuizSaveResponse.data);
-  //       } catch (error) {
-  //         console.error("Error submitting quiz data:", error.response?.data || error.message);
-  //         alert("Failed to save quiz questions");
-  //       }
-  //     } else {
-  //       alert("Please provide a file or enter a question and answer manually.");
-  //     }
-  //   }
-  // };
-  
+//   if (quizType === "static") {
+//     // Case: File Upload (with manual questions)
+//     if (uploadOption === "file" && file) {
+//       const formData = new FormData();
+//       formData.append("file", file);
+//       formData.append("university", university);
+//       formData.append("subjectCode", subjectCode);
+//       formData.append("category", category);
+
+//       try {
+//         const fileUploadResponse = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/upload", // Backend endpoint for file upload
+//           formData,
+//           {
+//             headers: {
+//               "Content-Type": "multipart/form-data",
+//             },
+//           }
+//         );
+
+//         // Now save the parsed questions to the database (assuming file parsing logic exists)
+//         const quizData = {
+//           university,
+//           subjectCode,
+//           category,
+//           questions: parsedQuestions, // Send the parsed questions to the backend
+//         };
+
+//         const saveQuizResponse = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/manual", // Backend endpoint to save quiz data (adjust the endpoint if needed)
+//           quizData,
+//           {
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
+
+//         alert("Quiz uploaded and saved successfully!");
+//         console.log(saveQuizResponse.data);
+//       } catch (error) {
+//         console.error("Error uploading file or saving quiz:", error.response?.data || error.message);
+//         alert("Failed to upload quiz");
+//       }
+//     }
+
+//     // Case: Manually Adding Questions (without file)
+//     else if (uploadOption === "manual" && manualQuestions.length > 0) {
+//       const manualData = {
+//         university,
+//         subjectCode,
+//         category,
+//         questions: manualQuestions,
+//       };
+
+//       try {
+//         const manualSaveResponse = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/manual", // Backend endpoint for manual entry
+//           manualData,
+//           {
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
+
+//         alert("Manual quiz created successfully!");
+//         console.log(manualSaveResponse.data);
+//       } catch (error) {
+//         console.error("Error submitting manual data:", error.response?.data || error.message);
+//         alert("Failed to create quiz");
+//       }
+//     }
+
+//     // Case: If user uploads file with parsed questions (but no manual data)
+//     else if (uploadOption === "file" && parsedQuestions.length > 0) {
+//       const quizData = {
+//         university,
+//         subjectCode,
+//         category,
+//         questions: parsedQuestions, // Use the parsed questions here
+//       };
+
+//       try {
+//         const parsedQuizSaveResponse = await axios.post(
+//           "https://requin-quiz-backend.vercel.app/api/quiz/upload", // Backend endpoint to save quiz data (adjust the endpoint if needed)
+//           quizData,
+//           {
+//             headers: {
+//               "Content-Type": "application/json",
+//             },
+//           }
+//         );
+
+//         alert("All quiz questions uploaded and saved successfully!");
+//         console.log(parsedQuizSaveResponse.data);
+//       } catch (error) {
+//         console.error("Error submitting quiz data:", error.response?.data || error.message);
+//         alert("Failed to save quiz questions");
+//       }
+//     } else {
+//       alert("Please provide a file or enter a question and answer manually.");
+//     }
+//   }
+// };
 
 //   return (
 //     <div className="flex min-h-screen bg-gradient-to-br from-gray-800 to-gray-900">
@@ -1114,7 +1112,7 @@ import Sidebar from "../components/Sidebar";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "quill-table-ui/dist/index.css"; // Import table UI styles
-import TableUI from "quill-table-ui"; // Import Quill Table UI 
+import TableUI from "quill-table-ui"; // Import Quill Table UI
 
 // Register TableUI for Quill
 Quill.register("modules/tableUI", TableUI);
@@ -1127,7 +1125,9 @@ const AddStaticQuiz = () => {
   const [file, setFile] = useState(null);
   const [uploadOption, setUploadOption] = useState("file");
   const [parsedQuestions, setParsedQuestions] = useState([]);
-  const [manualQuestions, setManualQuestions] = useState([{ question: "", answer: "" }]);
+  const [manualQuestions, setManualQuestions] = useState([
+    { question: "", answer: "" },
+  ]);
 
   const quillModules = {
     toolbar: [
@@ -1153,7 +1153,10 @@ const AddStaticQuiz = () => {
       const workbook = XLSX.read(binaryStr, { type: "binary" });
 
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-      const data = XLSX.utils.sheet_to_json(worksheet, { header: 1, defval: "" });
+      const data = XLSX.utils.sheet_to_json(worksheet, {
+        header: 1,
+        defval: "",
+      });
 
       const columnHeaders = data[0] || [];
       let questionIndex = -1;
@@ -1169,7 +1172,9 @@ const AddStaticQuiz = () => {
       });
 
       if (questionIndex === -1 || answerIndex === -1) {
-        alert("Error: Could not find appropriate 'Questions' and 'Answers' columns.");
+        alert(
+          "Error: Could not find appropriate 'Questions' and 'Answers' columns."
+        );
         return;
       }
 
@@ -1186,53 +1191,52 @@ const AddStaticQuiz = () => {
 
     reader.readAsBinaryString(uploadedFile);
   };
-//   const handleFileChange = (e) => {
-//   const uploadedFile = e.target.files[0];
-//   setFile(uploadedFile);
+  //   const handleFileChange = (e) => {
+  //   const uploadedFile = e.target.files[0];
+  //   setFile(uploadedFile);
 
-//   const reader = new FileReader();
-//   reader.onload = (event) => {
-//     const binaryStr = event.target.result;
-//     const workbook = XLSX.read(binaryStr, { type: "binary" });
+  //   const reader = new FileReader();
+  //   reader.onload = (event) => {
+  //     const binaryStr = event.target.result;
+  //     const workbook = XLSX.read(binaryStr, { type: "binary" });
 
-//     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-//     const data = XLSX.utils.sheet_to_json(worksheet, {
-//       header: 1, 
-//       defval: "", 
-//       raw: true // Keeps raw content (HTML-like)
-//     });
+  //     const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+  //     const data = XLSX.utils.sheet_to_json(worksheet, {
+  //       header: 1,
+  //       defval: "",
+  //       raw: true // Keeps raw content (HTML-like)
+  //     });
 
-//     const columnHeaders = data[0] || [];
-//     let questionIndex = -1;
-//     let answerIndex = -1;
+  //     const columnHeaders = data[0] || [];
+  //     let questionIndex = -1;
+  //     let answerIndex = -1;
 
-//     columnHeaders.forEach((header, index) => {
-//       if (header.toString().toLowerCase().includes("question")) {
-//         questionIndex = index;
-//       }
-//       if (header.toString().toLowerCase().includes("answer")) {
-//         answerIndex = index;
-//       }
-//     });
+  //     columnHeaders.forEach((header, index) => {
+  //       if (header.toString().toLowerCase().includes("question")) {
+  //         questionIndex = index;
+  //       }
+  //       if (header.toString().toLowerCase().includes("answer")) {
+  //         answerIndex = index;
+  //       }
+  //     });
 
-//     if (questionIndex === -1 || answerIndex === -1) {
-//       alert("Error: Could not find appropriate 'Questions' and 'Answers' columns.");
-//       return;
-//     }
+  //     if (questionIndex === -1 || answerIndex === -1) {
+  //       alert("Error: Could not find appropriate 'Questions' and 'Answers' columns.");
+  //       return;
+  //     }
 
-//     const parsedData = data.slice(1).map((row) => {
-//       return {
-//         question: row[questionIndex] ? row[questionIndex].toString().replace(/\n/g, "<br/>") : "",
-//         answer: row[answerIndex] ? row[answerIndex].toString().replace(/\n/g, "<br/>") : "",
-//       };
-//     });
+  //     const parsedData = data.slice(1).map((row) => {
+  //       return {
+  //         question: row[questionIndex] ? row[questionIndex].toString().replace(/\n/g, "<br/>") : "",
+  //         answer: row[answerIndex] ? row[answerIndex].toString().replace(/\n/g, "<br/>") : "",
+  //       };
+  //     });
 
-//     setParsedQuestions(parsedData);
-//   };
+  //     setParsedQuestions(parsedData);
+  //   };
 
-//   reader.readAsBinaryString(uploadedFile);
-// };
-
+  //   reader.readAsBinaryString(uploadedFile);
+  // };
 
   const handleAddManualQuestion = () => {
     setManualQuestions([...manualQuestions, { question: "", answer: "" }]);
@@ -1240,7 +1244,7 @@ const AddStaticQuiz = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (quizType === "static") {
       // Case: File Upload (with manual questions)
       if (uploadOption === "file" && file) {
@@ -1249,10 +1253,10 @@ const AddStaticQuiz = () => {
         formData.append("university", university);
         formData.append("subjectCode", subjectCode);
         formData.append("category", category);
-  
+
         try {
           const fileUploadResponse = await axios.post(
-            "http://localhost:5000/api/quiz/upload", // Backend endpoint for file upload
+            "https://requin-quiz-backend.vercel.app/api/quiz/upload", // Backend endpoint for file upload
             formData,
             {
               headers: {
@@ -1260,7 +1264,7 @@ const AddStaticQuiz = () => {
               },
             }
           );
-  
+
           // Now save the parsed questions to the database (assuming file parsing logic exists)
           const quizData = {
             university,
@@ -1268,9 +1272,9 @@ const AddStaticQuiz = () => {
             category,
             questions: parsedQuestions, // Send the parsed questions to the backend
           };
-  
+
           const saveQuizResponse = await axios.post(
-            "http://localhost:5000/api/quiz/manual", // Backend endpoint to save quiz data (adjust the endpoint if needed)
+            "https://requin-quiz-backend.vercel.app/api/quiz/manual", // Backend endpoint to save quiz data (adjust the endpoint if needed)
             quizData,
             {
               headers: {
@@ -1278,15 +1282,18 @@ const AddStaticQuiz = () => {
               },
             }
           );
-  
+
           alert("Quiz uploaded and saved successfully!");
           console.log(saveQuizResponse.data);
         } catch (error) {
-          console.error("Error uploading file or saving quiz:", error.response?.data || error.message);
+          console.error(
+            "Error uploading file or saving quiz:",
+            error.response?.data || error.message
+          );
           alert("Failed to upload quiz");
         }
       }
-  
+
       // Case: Manually Adding Questions (without file)
       else if (uploadOption === "manual" && manualQuestions.length > 0) {
         const manualData = {
@@ -1295,10 +1302,10 @@ const AddStaticQuiz = () => {
           category,
           questions: manualQuestions,
         };
-  
+
         try {
           const manualSaveResponse = await axios.post(
-            "http://localhost:5000/api/quiz/manual", // Backend endpoint for manual entry
+            "https://requin-quiz-backend.vercel.app/api/quiz/manual", // Backend endpoint for manual entry
             manualData,
             {
               headers: {
@@ -1306,15 +1313,18 @@ const AddStaticQuiz = () => {
               },
             }
           );
-  
+
           alert("Manual quiz created successfully!");
           console.log(manualSaveResponse.data);
         } catch (error) {
-          console.error("Error submitting manual data:", error.response?.data || error.message);
+          console.error(
+            "Error submitting manual data:",
+            error.response?.data || error.message
+          );
           alert("Failed to create quiz");
         }
       }
-  
+
       // Case: If user uploads file with parsed questions (but no manual data)
       else if (uploadOption === "file" && parsedQuestions.length > 0) {
         const quizData = {
@@ -1323,10 +1333,10 @@ const AddStaticQuiz = () => {
           category,
           questions: parsedQuestions, // Use the parsed questions here
         };
-  
+
         try {
           const parsedQuizSaveResponse = await axios.post(
-            "http://localhost:5000/api/quiz/upload", // Backend endpoint to save quiz data (adjust the endpoint if needed)
+            "https://requin-quiz-backend.vercel.app/api/quiz/upload", // Backend endpoint to save quiz data (adjust the endpoint if needed)
             quizData,
             {
               headers: {
@@ -1334,11 +1344,14 @@ const AddStaticQuiz = () => {
               },
             }
           );
-  
+
           alert("All quiz questions uploaded and saved successfully!");
           console.log(parsedQuizSaveResponse.data);
         } catch (error) {
-          console.error("Error submitting quiz data:", error.response?.data || error.message);
+          console.error(
+            "Error submitting quiz data:",
+            error.response?.data || error.message
+          );
           alert("Failed to save quiz questions");
         }
       } else {
@@ -1347,17 +1360,20 @@ const AddStaticQuiz = () => {
     }
   };
 
-
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-gray-800 to-gray-900">
       <Sidebar />
       <div className="flex-1 p-8 bg-gray-100">
         <div className="w-full max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Add Static Quiz</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Add Static Quiz
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label className="block text-gray-700 font-medium mb-2">University</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  University
+                </label>
                 <input
                   type="text"
                   value={university}
@@ -1367,7 +1383,9 @@ const AddStaticQuiz = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Subject Code</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Subject Code
+                </label>
                 <input
                   type="text"
                   value={subjectCode}
@@ -1377,7 +1395,9 @@ const AddStaticQuiz = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Category</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Category
+                </label>
                 <input
                   type="text"
                   value={category}
@@ -1413,7 +1433,9 @@ const AddStaticQuiz = () => {
 
             {uploadOption === "file" && (
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Upload Excel File (.xlsx)</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Upload Excel File (.xlsx)
+                </label>
                 <input
                   type="file"
                   accept=".xlsx"
@@ -1467,7 +1489,8 @@ const AddStaticQuiz = () => {
             )}
 
             <button
-              type="submit" onClick={handleSubmit}
+              type="submit"
+              onClick={handleSubmit}
               className="w-full py-3 bg-green-500 text-white text-lg font-semibold rounded-lg hover:bg-green-600 transition"
             >
               Create Quiz
@@ -1480,7 +1503,6 @@ const AddStaticQuiz = () => {
 };
 
 export default AddStaticQuiz;
-
 
 // import React, { useState } from "react";
 // import axios from "axios";
@@ -1555,7 +1577,7 @@ export default AddStaticQuiz;
 //     };
 
 //     try {
-//       const response = await axios.post("http://localhost:5000/api/quiz/upload", quizData, {
+//       const response = await axios.post("https://requin-quiz-backend.vercel.app/api/quiz/upload", quizData, {
 //         headers: { "Content-Type": "application/json" },
 //       });
 //       alert("Quiz uploaded successfully!");

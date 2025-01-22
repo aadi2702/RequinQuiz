@@ -29,7 +29,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         console.log("Dynamic response", response.data.data.questions);
 
 //         if (response.data.success) {
@@ -66,7 +66,7 @@
 
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 
 //         if (response.status === 200 && response.data.data) {
@@ -344,7 +344,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         console.log("Dynamic response", response.data.data.questions);
 
 //         if (response.data.success) {
@@ -378,7 +378,7 @@
 
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 
 //         if (response.status === 200 && response.data.data) {
@@ -651,7 +651,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         console.log("Dynamic response", response.data.data.questions);
 
 //         if (response.data.success) {
@@ -688,7 +688,7 @@
 
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 
 //         if (response.status === 200 && response.data.data) {
@@ -966,7 +966,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         console.log("Dynamic response", response.data.data.questions);
 
 //         if (response.data.success) {
@@ -1000,7 +1000,7 @@
 
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 
 //         if (response.status === 200 && response.data.data) {
@@ -1273,7 +1273,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -1303,7 +1303,7 @@
 //       setError(null);
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -1566,7 +1566,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -1596,7 +1596,7 @@
 //       setError(null);
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -1913,7 +1913,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -1943,7 +1943,7 @@
 //       setError(null);
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -2261,7 +2261,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -2288,7 +2288,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -2590,7 +2590,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -2617,7 +2617,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -2931,7 +2931,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -2958,7 +2958,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -3275,7 +3275,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -3302,7 +3302,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -3627,7 +3627,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -3654,7 +3654,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -4002,7 +4002,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -4030,7 +4030,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -4394,7 +4394,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -4425,7 +4425,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz/static");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz/static");
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -4744,7 +4744,6 @@
 
 // export default CombinedQuizPage;
 
-
 //Perfect one!!
 
 // import React, { useEffect, useState } from "react";
@@ -4795,7 +4794,7 @@
 //   useEffect(() => {
 //     const fetchDynamicQuestions = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -4827,7 +4826,7 @@
 //       setError(null);
 //       try {
 //         const response = await axios.get(
-//           "http://localhost:5000/api/quiz/static"
+//           "https://requin-quiz-backend.vercel.app/api/quiz/static"
 //         );
 //         if (response.status === 200 && response.data.data) {
 //           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -5242,7 +5241,9 @@ const CombinedQuizPage = () => {
   useEffect(() => {
     const fetchDynamicQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/quiz");
+        const response = await axios.get(
+          "https://requin-quiz-backend.vercel.app/api/quiz"
+        );
         if (response.data.success) {
           const allQuestions = response.data.data.flatMap((quiz) =>
             quiz.questions.map((q) => ({
@@ -5274,7 +5275,7 @@ const CombinedQuizPage = () => {
       setError(null);
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/quiz/static"
+          "https://requin-quiz-backend.vercel.app/api/quiz/static"
         );
         if (response.status === 200 && response.data.data) {
           const allStaticQuestions = response.data.data.flatMap((quiz) =>

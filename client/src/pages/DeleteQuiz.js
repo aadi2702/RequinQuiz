@@ -11,7 +11,9 @@ const DeleteQuiz = () => {
 
   const fetchQuizzes = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/quiz");
+      const response = await axios.get(
+        "https://requin-quiz-backend.vercel.app/api/quiz"
+      );
       if (response.data.success && Array.isArray(response.data.data)) {
         setQuizzes(response.data.data);
       }
@@ -35,7 +37,7 @@ const DeleteQuiz = () => {
       }
 
       const response = await axios.delete(
-        `http://localhost:5000/api/quiz/${quizId}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

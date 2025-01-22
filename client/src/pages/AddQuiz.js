@@ -55,7 +55,7 @@
 //         };
 
 //         const response = await axios.post(
-//           "http://localhost:5000/api/quiz/", 
+//           "https://requin-quiz-backend.vercel.app/api/quiz/",
 //           quizData,
 //           {
 //             withCredentials: true,
@@ -86,7 +86,7 @@
 
 //       try {
 //         const response = await axios.post(
-//           "http://localhost:5000/api/quiz/upload",
+//           "https://requin-quiz-backend.vercel.app/api/quiz/upload",
 //           formData,
 //           {
 //             headers: {
@@ -314,7 +314,7 @@
 //         };
 
 //         const response = await axios.post(
-//           "http://localhost:5000/api/quiz/",
+//           "https://requin-quiz-backend.vercel.app/api/quiz/",
 //           quizData,
 //           {
 //             withCredentials: true,
@@ -346,7 +346,7 @@
 
 //         try {
 //           const response = await axios.post(
-//             "http://localhost:5000/api/quiz/upload",
+//             "https://requin-quiz-backend.vercel.app/api/quiz/upload",
 //             formData,
 //             {
 //               headers: {
@@ -372,7 +372,7 @@
 
 //         try {
 //           const response = await axios.post(
-//             "http://localhost:5000/api/quiz/manual",
+//             "https://requin-quiz-backend.vercel.app/api/quiz/manual",
 //             manualData,
 //             {
 //               headers: {
@@ -608,7 +608,7 @@ const AddQuiz = () => {
         };
 
         const response = await axios.post(
-          "http://localhost:5000/api/quiz/", 
+          "https://requin-quiz-backend.vercel.app/api/quiz/",
           quizData,
           {
             withCredentials: true,
@@ -625,12 +625,17 @@ const AddQuiz = () => {
         setUniversity("");
         setSubjectCode("");
         setCategory("");
-        setQuestions([{ questionText: "", options: ["", "", "", ""], correctOption: "" }]);
+        setQuestions([
+          { questionText: "", options: ["", "", "", ""], correctOption: "" },
+        ]);
       } catch (error) {
-        console.error("Error creating quiz:", error.response?.data || error.message);
+        console.error(
+          "Error creating quiz:",
+          error.response?.data || error.message
+        );
         alert("Failed to create quiz");
       }
-    } 
+    }
     // Handling static quiz with file upload or manual entry
     else if (quizType === "static") {
       if (uploadOption === "file" && file) {
@@ -642,7 +647,7 @@ const AddQuiz = () => {
 
         try {
           const response = await axios.post(
-            "http://localhost:5000/api/quiz/upload",
+            "https://requin-quiz-backend.vercel.app/api/quiz/upload",
             formData,
             {
               headers: {
@@ -654,7 +659,10 @@ const AddQuiz = () => {
           alert("Quiz uploaded successfully!");
           console.log(response.data);
         } catch (error) {
-          console.error("Error uploading file:", error.response?.data || error.message);
+          console.error(
+            "Error uploading file:",
+            error.response?.data || error.message
+          );
           alert("Failed to upload quiz");
         }
       } else if (uploadOption === "manual" && staticQuestion && staticAnswer) {
@@ -668,7 +676,7 @@ const AddQuiz = () => {
 
         try {
           const response = await axios.post(
-            "http://localhost:5000/api/quiz/manual",
+            "https://requin-quiz-backend.vercel.app/api/quiz/manual",
             manualData,
             {
               headers: {
@@ -680,7 +688,10 @@ const AddQuiz = () => {
           alert("Manual quiz created successfully!");
           console.log(response.data);
         } catch (error) {
-          console.error("Error submitting manual data:", error.response?.data || error.message);
+          console.error(
+            "Error submitting manual data:",
+            error.response?.data || error.message
+          );
           alert("Failed to create quiz");
         }
       } else {
@@ -699,7 +710,9 @@ const AddQuiz = () => {
       {/* Main content area */}
       <div className="flex-1 p-8 bg-gray-100">
         <div className="w-full max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Add Quiz</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Add Quiz
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Quiz Type Selection */}
             <div className="flex items-center justify-around">
@@ -728,7 +741,9 @@ const AddQuiz = () => {
             {/* University, Subject Code, Category */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label className="block text-gray-700 font-medium mb-2">University</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  University
+                </label>
                 <input
                   type="text"
                   value={university}
@@ -738,7 +753,9 @@ const AddQuiz = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Subject Code</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Subject Code
+                </label>
                 <input
                   type="text"
                   value={subjectCode}
@@ -748,7 +765,9 @@ const AddQuiz = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Category</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Category
+                </label>
                 <input
                   type="text"
                   value={category}
@@ -762,34 +781,59 @@ const AddQuiz = () => {
             {/* Dynamic Quiz - Questions */}
             {quizType === "dynamic" && (
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-700">Questions</h3>
+                <h3 className="text-xl font-semibold text-gray-700">
+                  Questions
+                </h3>
                 {questions.map((q, index) => (
-                  <div key={index} className="p-4 bg-white border border-gray-200 rounded-lg shadow-md space-y-3">
-                    <label className="block text-gray-700 font-medium">Question {index + 1}:</label>
+                  <div
+                    key={index}
+                    className="p-4 bg-white border border-gray-200 rounded-lg shadow-md space-y-3"
+                  >
+                    <label className="block text-gray-700 font-medium">
+                      Question {index + 1}:
+                    </label>
                     <input
                       type="text"
                       value={q.questionText}
-                      onChange={(e) => handleQuestionChange(index, "questionText", e.target.value)}
+                      onChange={(e) =>
+                        handleQuestionChange(
+                          index,
+                          "questionText",
+                          e.target.value
+                        )
+                      }
                       required
                       className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-400"
                     />
-                    <label className="block text-gray-700 font-medium">Options:</label>
+                    <label className="block text-gray-700 font-medium">
+                      Options:
+                    </label>
                     {q.options.map((option, optionIndex) => (
                       <input
                         key={optionIndex}
                         type="text"
                         value={option}
                         placeholder={`Option ${optionIndex + 1}`}
-                        onChange={(e) => handleOptionChange(index, optionIndex, e.target.value)}
+                        onChange={(e) =>
+                          handleOptionChange(index, optionIndex, e.target.value)
+                        }
                         required
                         className="w-full p-2 mb-2 border rounded focus:ring-2 focus:ring-blue-400"
                       />
                     ))}
-                    <label className="block text-gray-700 font-medium">Correct Option (0-3):</label>
+                    <label className="block text-gray-700 font-medium">
+                      Correct Option (0-3):
+                    </label>
                     <input
                       type="number"
                       value={q.correctOption}
-                      onChange={(e) => handleQuestionChange(index, "correctOption", e.target.value)}
+                      onChange={(e) =>
+                        handleQuestionChange(
+                          index,
+                          "correctOption",
+                          e.target.value
+                        )
+                      }
                       min="0"
                       max="3"
                       required
@@ -836,7 +880,9 @@ const AddQuiz = () => {
                 {/* File Upload */}
                 {uploadOption === "file" && (
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">Upload Excel File (.xlsx):</label>
+                    <label className="block text-gray-700 font-medium mb-2">
+                      Upload Excel File (.xlsx):
+                    </label>
                     <input
                       type="file"
                       accept=".xlsx"
@@ -850,14 +896,18 @@ const AddQuiz = () => {
                 {/* Manual Question and Answer Entry */}
                 {uploadOption === "manual" && (
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">Question:</label>
+                    <label className="block text-gray-700 font-medium mb-2">
+                      Question:
+                    </label>
                     <input
                       type="text"
                       value={staticQuestion}
                       onChange={(e) => setStaticQuestion(e.target.value)}
                       className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400"
                     />
-                    <label className="block text-gray-700 font-medium mb-2">Answer:</label>
+                    <label className="block text-gray-700 font-medium mb-2">
+                      Answer:
+                    </label>
                     <input
                       type="text"
                       value={staticAnswer}

@@ -49,7 +49,7 @@
 //       };
 
 //       const response = await axios.post(
-//         "http://localhost:5000/api/quiz/",
+//         "https://requin-quiz-backend.vercel.app/api/quiz/",
 //         quizData,
 //         {
 //           withCredentials: true,
@@ -273,7 +273,7 @@
 //       };
 
 //       const response = await axios.post(
-//         "http://localhost:5000/api/quiz/",
+//         "https://requin-quiz-backend.vercel.app/api/quiz/",
 //         quizData,
 //         {
 //           withCredentials: true,
@@ -467,7 +467,7 @@
 //       };
 
 //       const response = await axios.post(
-//         "http://localhost:5000/api/quiz/",
+//         "https://requin-quiz-backend.vercel.app/api/quiz/",
 //         quizData,
 //         {
 //           withCredentials: true,
@@ -622,7 +622,7 @@
 //   const [questions, setQuestions] = useState([
 //     { questionText: "", options: ["", "", "", ""], correctOption: "" },
 //   ]);
-  
+
 //   const quillRef = useRef(null); // Reference for Quill editor
 
 //   // Handle adding new questions
@@ -693,7 +693,7 @@
 //         })),
 //       };
 
-//       const response = await axios.post("http://localhost:5000/api/quiz/", quizData, {
+//       const response = await axios.post("https://requin-quiz-backend.vercel.app/api/quiz/", quizData, {
 //         withCredentials: true,
 //         headers: {
 //           "Content-Type": "application/json",
@@ -920,7 +920,7 @@
 //         })),
 //       };
 
-//       const response = await axios.post("http://localhost:5000/api/quiz/", quizData, {
+//       const response = await axios.post("https://requin-quiz-backend.vercel.app/api/quiz/", quizData, {
 //         withCredentials: true,
 //         headers: {
 //           "Content-Type": "application/json",
@@ -1071,7 +1071,7 @@ import "quill-table-ui/dist/index.css"; // Import table UI styles
 import Sidebar from "../components/Sidebar";
 
 // Import Quill Table UI
-import TableUI from "quill-table-ui"; 
+import TableUI from "quill-table-ui";
 
 // Register the Quill Table module
 Quill.register("modules/tableUI", TableUI);
@@ -1129,7 +1129,9 @@ const AddDynamicQuiz = () => {
 
         const imageUrl = response.data.url; // Adjust this based on your server response
         const range = quillRef.current.getEditor().getSelection();
-        quillRef.current.getEditor().insertEmbed(range.index, "image", imageUrl);
+        quillRef.current
+          .getEditor()
+          .insertEmbed(range.index, "image", imageUrl);
       } catch (error) {
         console.error("Error uploading image:", error);
       }
@@ -1151,16 +1153,20 @@ const AddDynamicQuiz = () => {
           options: q.options.map((option, index) => ({
             optionText: option,
             isCorrect: index === parseInt(q.correctOption),
-          })),  
+          })),
         })),
       };
 
-      const response = await axios.post("http://localhost:5000/api/quiz/", quizData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "https://requin-quiz-backend.vercel.app/api/quiz/",
+        quizData,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       alert("Quiz created successfully!");
       console.log(response.data);
@@ -1169,9 +1175,14 @@ const AddDynamicQuiz = () => {
       setUniversity("");
       setSubjectCode("");
       setCategory("");
-      setQuestions([{ questionText: "", options: ["", "", "", ""], correctOption: "" }]);
+      setQuestions([
+        { questionText: "", options: ["", "", "", ""], correctOption: "" },
+      ]);
     } catch (error) {
-      console.error("Error creating quiz:", error.response?.data || error.message);
+      console.error(
+        "Error creating quiz:",
+        error.response?.data || error.message
+      );
       alert("Failed to create quiz");
     }
   };
@@ -1196,12 +1207,16 @@ const AddDynamicQuiz = () => {
       <Sidebar />
       <div className="flex-1 p-8 bg-gray-100">
         <div className="w-full max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Add Dynamic Quiz</h2>
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+            Add Dynamic Quiz
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* University, Subject Code, Category */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label className="block text-gray-700 font-medium mb-2">University</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  University
+                </label>
                 <input
                   type="text"
                   value={university}
@@ -1211,7 +1226,9 @@ const AddDynamicQuiz = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Subject Code</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Subject Code
+                </label>
                 <input
                   type="text"
                   value={subjectCode}
@@ -1221,7 +1238,9 @@ const AddDynamicQuiz = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-700 font-medium mb-2">Category</label>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Category
+                </label>
                 <input
                   type="text"
                   value={category}
@@ -1236,11 +1255,18 @@ const AddDynamicQuiz = () => {
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-gray-700">Questions</h3>
               {questions.map((q, index) => (
-                <div key={index} className="p-4 bg-white border rounded-lg space-y-3">
-                  <label className="block font-medium">Question {index + 1}:</label>
+                <div
+                  key={index}
+                  className="p-4 bg-white border rounded-lg space-y-3"
+                >
+                  <label className="block font-medium">
+                    Question {index + 1}:
+                  </label>
                   <ReactQuill
                     value={q.questionText}
-                    onChange={(value) => handleQuestionChange(index, "questionText", value)}
+                    onChange={(value) =>
+                      handleQuestionChange(index, "questionText", value)
+                    }
                     modules={modules}
                     placeholder="Type your question here..."
                     className="w-full"
@@ -1250,18 +1276,28 @@ const AddDynamicQuiz = () => {
                     <div key={optionIndex}>
                       <ReactQuill
                         value={option}
-                        onChange={(value) => handleOptionChange(index, optionIndex, value)}
+                        onChange={(value) =>
+                          handleOptionChange(index, optionIndex, value)
+                        }
                         modules={modules}
                         placeholder={`Option ${optionIndex + 1}`}
                         className="w-full"
                       />
                     </div>
                   ))}
-                  <label className="block text-gray-700 font-medium">Correct Option (0-3):</label>
+                  <label className="block text-gray-700 font-medium">
+                    Correct Option (0-3):
+                  </label>
                   <input
                     type="number"
                     value={q.correctOption}
-                    onChange={(e) => handleQuestionChange(index, "correctOption", e.target.value)}
+                    onChange={(e) =>
+                      handleQuestionChange(
+                        index,
+                        "correctOption",
+                        e.target.value
+                      )
+                    }
                     min="0"
                     max="3"
                     required
@@ -1293,4 +1329,3 @@ const AddDynamicQuiz = () => {
 };
 
 export default AddDynamicQuiz;
-  

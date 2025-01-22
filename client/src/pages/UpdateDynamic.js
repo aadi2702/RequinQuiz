@@ -17,7 +17,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -204,7 +204,6 @@
 
 // export default UniversitySubjectPage;
 
-
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 
@@ -217,7 +216,7 @@
 //   const [filteredQuestions, setFilteredQuestions] = useState([]); // Filtered questions based on selected subject code
 //   const [loading, setLoading] = useState(false); // For loading state
 //   const [error, setError] = useState(null); // For error handling
-  
+
 //   // For the edit modal
 //   const [isModalOpen, setIsModalOpen] = useState(false); // Modal visibility state
 //   const [currentQuestion, setCurrentQuestion] = useState(null); // Holds the current question being edited
@@ -228,7 +227,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -325,7 +324,7 @@
 //       };
 
 //       const response = await axios.put(
-//         `http://localhost:5000/api/quiz/update/${currentQuestion._id}`, // Assuming you have a question ID for update
+//         `https://requin-quiz-backend.vercel.app/api/quiz/update/${currentQuestion._id}`, // Assuming you have a question ID for update
 //         updatedData
 //       );
 //       if (response.data.success) {
@@ -576,7 +575,6 @@
 
 // export default UniversitySubjectPage;
 
-
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 // import Sidebar from "../components/Sidebar"; // Make sure to import the Sidebar component
@@ -597,7 +595,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -814,7 +812,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -882,7 +880,7 @@
 //   const handleSaveChanges = async () => {
 //     try {
 //       // Add your API endpoint to update the question
-//       await axios.post("http://localhost:5000/api/quiz/update", updatedQuestion);
+//       await axios.post("https://requin-quiz-backend.vercel.app/api/quiz/update", updatedQuestion);
 //       alert("Question updated successfully!");
 //       setEditModalOpen(false);
 //     } catch {
@@ -1019,7 +1017,6 @@
 
 // export default UniversitySubjectPage;
 
-
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 // import Sidebar from "../components/Sidebar";
@@ -1051,7 +1048,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -1140,7 +1137,7 @@
 //   const handleSaveChanges = async () => {
 //     try {
 //       await axios.put(
-//         `http://localhost:5000/api/quiz/${currentQuestion.quizId}/question/${currentQuestion._id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/${currentQuestion.quizId}/question/${currentQuestion._id}`,
 //         updatedQuestion
 //       );
 //       alert("Question updated successfully!");
@@ -1276,7 +1273,6 @@
 
 // export default UniversitySubjectPage;
 
-
 // import React, { useEffect, useState } from "react";
 // import axios from "axios";
 // import Sidebar from "../components/Sidebar";
@@ -1292,11 +1288,11 @@
 //   const [filteredQuestions, setFilteredQuestions] = useState([]);
 //   const [loading, setLoading] = useState(false);
 //   const [error, setError] = useState(null);
-  
+
 //   // New state for edit modal
 //   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 //   const [editingQuestion, setEditingQuestion] = useState(null);
-  
+
 //   // Rich text editor modules configuration
 //   const modules = {
 //     toolbar: [
@@ -1316,7 +1312,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -1380,7 +1376,7 @@
 //   const handleEditSubmit = async (e) => {
 //     e.preventDefault();
 //     setLoading(true);
-    
+
 //     try {
 //       const updatedQuestionData = {
 //         questionText: editingQuestion.questionText,
@@ -1391,7 +1387,7 @@
 //       };
 
 //       await axios.put(
-//         `http://localhost:5000/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
 //         updatedQuestionData,
 //         {
 //           withCredentials: true,
@@ -1402,7 +1398,7 @@
 //       );
 
 //       // Refresh questions after update
-//       const response = await axios.get("http://localhost:5000/api/quiz");
+//       const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //       if (response.data.success) {
 //         const allQuestions = response.data.data.flatMap((quiz) =>
 //           quiz.questions.map((q) => ({
@@ -1417,7 +1413,7 @@
 //           }))
 //         );
 //         setQuestions(allQuestions);
-        
+
 //         // Update filtered questions
 //         const filtered = allQuestions.filter(
 //           (q) => q.college === selectedCollege && q.subjectCode === selectedSubjectCode
@@ -1684,7 +1680,7 @@
 //       setLoading(true);
 //       setError(null);
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
 //             quiz.questions.map((q) => ({
@@ -1759,7 +1755,7 @@
 //       };
 
 //       await axios.put(
-//         `http://localhost:5000/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
 //         updatedQuestionData,
 //         {
 //           withCredentials: true,
@@ -1770,7 +1766,7 @@
 //       );
 
 //       // Refresh questions after update
-//       const response = await axios.get("http://localhost:5000/api/quiz");
+//       const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //       if (response.data.success) {
 //         const allQuestions = response.data.data.flatMap((quiz) =>
 //           quiz.questions.map((q) => ({
@@ -1834,7 +1830,7 @@
 //     try {
 //       // Sending the DELETE request to the backend
 //       await axios.delete(
-//         `http://localhost:5000/api/quiz/${quizId}/question/${questionId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}/question/${questionId}`,
 //         {
 //           withCredentials: true,
 //         }
@@ -2058,14 +2054,11 @@
 
 // export default UniversitySubjectPage;
 
-
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; 
+import "react-quill/dist/quill.snow.css";
 
 const UniversitySubjectPage = () => {
   const [questions, setQuestions] = useState([]);
@@ -2098,7 +2091,9 @@ const UniversitySubjectPage = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get("http://localhost:5000/api/quiz");
+        const response = await axios.get(
+          "https://requin-quiz-backend.vercel.app/api/quiz"
+        );
         if (response.data.success) {
           const allQuestions = response.data.data.flatMap((quiz) =>
             quiz.questions.map((q) => ({
@@ -2109,7 +2104,9 @@ const UniversitySubjectPage = () => {
               subjectCode: quiz.Subject_code,
               category: quiz.category,
               options: q.options,
-              correctAnswer: q.options.find((option) => option.isCorrect)?.optionText || "No answer available",
+              correctAnswer:
+                q.options.find((option) => option.isCorrect)?.optionText ||
+                "No answer available",
             }))
           );
           setQuestions(allQuestions);
@@ -2132,9 +2129,12 @@ const UniversitySubjectPage = () => {
   useEffect(() => {
     if (selectedSubjectCode) {
       const subjectQuestions = questions.filter(
-        (q) => q.college === selectedCollege && q.subjectCode === selectedSubjectCode
+        (q) =>
+          q.college === selectedCollege && q.subjectCode === selectedSubjectCode
       );
-      const availableCategories = [...new Set(subjectQuestions.map((q) => q.category))];
+      const availableCategories = [
+        ...new Set(subjectQuestions.map((q) => q.category)),
+      ];
       setCategories(availableCategories.filter(Boolean));
       setSelectedCategory(""); // Reset category when subject code changes
     } else {
@@ -2159,8 +2159,8 @@ const UniversitySubjectPage = () => {
   const handleSubjectCodeChange = (subjectCode) => {
     setSelectedSubjectCode(subjectCode);
     const filtered = questions.filter(
-      (q) => 
-        q.college === selectedCollege && 
+      (q) =>
+        q.college === selectedCollege &&
         q.subjectCode === subjectCode &&
         (!selectedCategory || q.category === selectedCategory) // Added category filter
     );
@@ -2171,8 +2171,8 @@ const UniversitySubjectPage = () => {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     const filtered = questions.filter(
-      (q) => 
-        q.college === selectedCollege && 
+      (q) =>
+        q.college === selectedCollege &&
         q.subjectCode === selectedSubjectCode &&
         (!category || q.category === category)
     );
@@ -2202,7 +2202,7 @@ const UniversitySubjectPage = () => {
       };
 
       await axios.put(
-        `http://localhost:5000/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
         updatedQuestionData,
         {
           withCredentials: true,
@@ -2212,7 +2212,9 @@ const UniversitySubjectPage = () => {
         }
       );
 
-      const response = await axios.get("http://localhost:5000/api/quiz");
+      const response = await axios.get(
+        "https://requin-quiz-backend.vercel.app/api/quiz"
+      );
       if (response.data.success) {
         const allQuestions = response.data.data.flatMap((quiz) =>
           quiz.questions.map((q) => ({
@@ -2231,8 +2233,8 @@ const UniversitySubjectPage = () => {
         setQuestions(allQuestions);
 
         const filtered = allQuestions.filter(
-          (q) => 
-            q.college === selectedCollege && 
+          (q) =>
+            q.college === selectedCollege &&
             q.subjectCode === selectedSubjectCode &&
             (!selectedCategory || q.category === selectedCategory)
         );
@@ -2270,13 +2272,15 @@ const UniversitySubjectPage = () => {
   };
 
   const handleDeleteClick = async (questionId, quizId) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this question?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this question?"
+    );
     if (!confirmDelete) return;
 
     setLoading(true);
     try {
       await axios.delete(
-        `http://localhost:5000/api/quiz/${quizId}/question/${questionId}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}/question/${questionId}`,
         {
           withCredentials: true,
         }
@@ -2431,7 +2435,8 @@ const UniversitySubjectPage = () => {
                       <p className="text-sm text-gray-500">
                         College: {question.college} | Subject Code:{" "}
                         {question.subjectCode}
-                        {question.category && ` | Category: ${question.category}`}
+                        {question.category &&
+                          ` | Category: ${question.category}`}
                       </p>
                     </div>
                   ))}
@@ -2447,7 +2452,9 @@ const UniversitySubjectPage = () => {
               <h2 className="text-2xl font-bold mb-6">Edit Question</h2>
               <form onSubmit={handleEditSubmit} className="space-y-6">
                 <div>
-                  <label className="block font-medium mb-2">Question Text:</label>
+                  <label className="block font-medium mb-2">
+                    Question Text:
+                  </label>
                   <ReactQuill
                     value={editingQuestion.questionText}
                     onChange={handleQuestionTextChange}
@@ -2470,7 +2477,6 @@ const UniversitySubjectPage = () => {
                   ))}
                 </div>
 
-                
                 <div>
                   <label className="block font-medium mb-2">
                     Correct Option (0-3):
@@ -2516,4 +2522,3 @@ const UniversitySubjectPage = () => {
 };
 
 export default UniversitySubjectPage;
-

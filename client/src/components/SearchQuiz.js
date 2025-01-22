@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
@@ -181,7 +181,7 @@
 //   useEffect(() => {
 //     const fetchData = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 
 //         if (response.data.success) {
 //           const allQuestions = response.data.data.flatMap((quiz) =>
@@ -405,7 +405,9 @@ const CombinedQuizPage = () => {
   useEffect(() => {
     const fetchDynamicQuestions = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/quiz");
+        const response = await axios.get(
+          "https://requin-quiz-backend.vercel.app/api/quiz"
+        );
 
         if (response.data.success) {
           const allQuestions = response.data.data.flatMap((quiz) =>
@@ -432,7 +434,9 @@ const CombinedQuizPage = () => {
       setError(null);
 
       try {
-        const response = await axios.get("http://localhost:5000/api/quiz/static");
+        const response = await axios.get(
+          "https://requin-quiz-backend.vercel.app/api/quiz/static"
+        );
 
         if (response.status === 200 && response.data.data) {
           const allStaticQuestions = response.data.data.flatMap((quiz) =>
@@ -514,7 +518,9 @@ const CombinedQuizPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Questions & Answers</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">
+        Questions & Answers
+      </h1>
 
       <div className="mb-6 text-center">
         <h2 className="font-bold text-lg mb-4">Select College</h2>
@@ -577,21 +583,23 @@ const CombinedQuizPage = () => {
 
       <div>
         {/* Display search results or filtered questions */}
-        {(searchResults.length > 0 || filteredQuestions.length > 0) ? (
+        {searchResults.length > 0 || filteredQuestions.length > 0 ? (
           <div>
             <h2 className="font-bold text-lg mb-4">Questions</h2>
-            {(searchResults.length > 0 ? searchResults : filteredQuestions).map((q, index) => (
-              <div key={index} className="border p-4 mb-4 rounded-lg">
-                <p className="font-bold">{q.questionText}</p>
-                <ul className="mt-2">
-                  {q.options.map((option, idx) => (
-                    <li key={idx} className="list-disc list-inside">
-                      {option.optionText}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {(searchResults.length > 0 ? searchResults : filteredQuestions).map(
+              (q, index) => (
+                <div key={index} className="border p-4 mb-4 rounded-lg">
+                  <p className="font-bold">{q.questionText}</p>
+                  <ul className="mt-2">
+                    {q.options.map((option, idx) => (
+                      <li key={idx} className="list-disc list-inside">
+                        {option.optionText}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            )}
           </div>
         ) : (
           <p>No questions available for this selection or search term.</p>

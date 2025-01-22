@@ -9,7 +9,7 @@
 //   useEffect(() => {
 //     const fetchQuizzes = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:5000/api/quiz");
+//         const response = await axios.get("https://requin-quiz-backend.vercel.app/api/quiz");
 //         if (response.data.success && Array.isArray(response.data.data)) {
 //           setQuizzes(response.data.data);
 //         }
@@ -36,7 +36,7 @@
 //       }
 
 //       const response = await axios.delete(
-//         `http://localhost:5000/api/quiz/${quizId}`,
+//         `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}`,
 //         {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
@@ -141,8 +141,7 @@
 //   );
 // };
 
-// export default GetAllQuiz;  
-
+// export default GetAllQuiz;
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -155,9 +154,11 @@ const GetAllQuiz = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/quiz");
+        const response = await axios.get(
+          "https://requin-quiz-backend.vercel.app/api/quiz"
+        );
         console.log(response);
-        
+
         if (response.data.success && Array.isArray(response.data.data)) {
           setQuizzes(response.data.data);
         }
@@ -179,14 +180,14 @@ const GetAllQuiz = () => {
     try {
       const token = localStorage.getItem("token"); // Retrieve token
       console.log(token);
-      
+
       if (!token) {
         alert("User not authenticated. Please log in.");
         return;
       }
 
       const response = await axios.delete(
-        `http://localhost:5000/api/quiz/${quizId}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
