@@ -15,10 +15,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.get("/", (req, res) => {
-  res.send("Hello Whatever");
-});
-
+app.get(
+  "/",
+  (req, res) => {
+    res.send("Hello World!");
+  }
+)
 // Middleware
 app.use(
   cors({
