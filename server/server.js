@@ -6,8 +6,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import quizRoutes from "./routes/quizRoutes.js";
 import errorHandler from "./middlewares/errorHandler.js";
-import cookieParser from 'cookie-parser';
-
+import cookieParser from "cookie-parser";
 
 // Load environment variables
 dotenv.config();
@@ -16,21 +15,23 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.get('/',"hello world")
+app.get("/", (req, res) => {
+  res.send("Hello Whatever");
+});
 
 // Middleware
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Frontend URL
+    origin: "http://localhost:3000", // Frontend URL
     credentials: true, // Enable cookies
   })
 );
 app.use(express.json());
-app.use(cookieParser());  
+app.use(cookieParser());
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/quiz", quizRoutes); 
+app.use("/api/quiz", quizRoutes);
 
 // Error Handling Middleware
 app.use(errorHandler);
