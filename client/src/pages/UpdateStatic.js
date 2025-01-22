@@ -2969,8 +2969,19 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
 
 const UpdateStatic = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = Cookies.get("token"); // Get token from cookies
+    if (!token) {
+      navigate("/admin-login"); // Redirect to login if no token
+    }
+  }, [navigate]);
   const [staticQuestions, setStaticQuestions] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [subjectCodes, setSubjectCodes] = useState([]);

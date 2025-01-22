@@ -1063,20 +1063,31 @@
 
 // export default AddDynamicQuiz;
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "quill-table-ui/dist/index.css"; // Import table UI styles
 import Sidebar from "../components/Sidebar";
+import Cookies from "js-cookie";
+
 
 // Import Quill Table UI
 import TableUI from "quill-table-ui";
+import { useNavigate } from "react-router-dom";
 
 // Register the Quill Table module
 Quill.register("modules/tableUI", TableUI);
 
 const AddDynamicQuiz = () => {
+  const navigate = useNavigate();
+  
+    useEffect(() => {
+      const token = Cookies.get("token"); // Get token from cookies
+      if (!token) {
+        navigate("/admin-login"); // Redirect to login if no token
+      }
+    }, [navigate]);
   const [quizType] = useState("dynamic");
   const [university, setUniversity] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
