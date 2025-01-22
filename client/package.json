@@ -17,6 +17,7 @@
     "joi": "^17.13.3",
     "joi-password-complexity": "^5.2.0",
     "jquery": "^3.7.1",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "quill-table-ui": "^1.0.7",
     "react": "^18.3.1",

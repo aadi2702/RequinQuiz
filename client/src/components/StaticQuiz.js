@@ -5243,7 +5243,7 @@ const CombinedQuizPage = () => {
       try {
         const response = await axios.get(
           "https://requin-quiz-backend.vercel.app/api/quiz"
-        );
+        )
         if (response.data.success) {
           const allQuestions = response.data.data.flatMap((quiz) =>
             quiz.questions.map((q) => ({
