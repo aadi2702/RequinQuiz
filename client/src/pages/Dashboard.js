@@ -9,7 +9,7 @@ const Dashboard = () => {
   useEffect(() => {
     const token = Cookies.get("token"); // Get token from cookies
     if (!token) {
-      navigate("/login"); // Redirect to login if no token
+      navigate("/admin-login"); // Redirect to login if no token
     }
   }, [navigate]);
   return (
