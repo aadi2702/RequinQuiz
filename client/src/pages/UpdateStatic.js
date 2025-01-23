@@ -2972,7 +2972,7 @@ import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-
+const UpdateStatic =()=>{
   const [staticQuestions, setStaticQuestions] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [subjectCodes, setSubjectCodes] = useState([]);
