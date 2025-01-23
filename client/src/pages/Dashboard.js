@@ -4,14 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = Cookies.get("token"); // Get token from cookies
-    if (!token) {
-      navigate("/admin-login"); // Redirect to login if no token
-    }
-  }, [navigate]);
   return (
     <div className="dashboard-container">
       <Sidebar />
