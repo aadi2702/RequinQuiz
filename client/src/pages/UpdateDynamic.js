@@ -2054,487 +2054,6 @@
 
 // export default UniversitySubjectPage;
 
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import Sidebar from "../components/Sidebar";
-// import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
-// import Cookies from "js-cookie";
-// import { useNavigate } from "react-router-dom";
-
-
-// const UniversitySubjectPage = () => {
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     const token = Cookies.get("token"); // Get token from cookies
-//     if (!token) {
-//       navigate("/admin-login"); // Redirect to login if no token
-//     }
-//   }, [navigate]);
-//   const [questions, setQuestions] = useState([]);
-//   const [colleges, setColleges] = useState([]);
-//   const [subjectCodes, setSubjectCodes] = useState([]);
-//   const [categories, setCategories] = useState([]); // Added for category feature
-//   const [selectedCollege, setSelectedCollege] = useState("");
-//   const [selectedSubjectCode, setSelectedSubjectCode] = useState("");
-//   const [selectedCategory, setSelectedCategory] = useState(""); // Added for category feature
-//   const [filteredQuestions, setFilteredQuestions] = useState([]);
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-//   const [editingQuestion, setEditingQuestion] = useState(null);
-
-//   const modules = {
-//     toolbar: [
-//       [{ header: "1" }, { header: "2" }, { font: [] }],
-//       [{ list: "ordered" }, { list: "bullet" }],
-//       ["bold", "italic", "underline", "strike"],
-//       ["link", "image"],
-//       [{ align: [] }],
-//       ["blockquote", "code-block"],
-//       ["clean"],
-//     ],
-//   };
-
-//   useEffect(() => {
-//     const fetchDynamicQuestions = async () => {
-//       setLoading(true);
-//       setError(null);
-//       try {
-//         const response = await axios.get(
-//           "https://requin-quiz-backend.vercel.app/api/quiz"
-//         );
-//         if (response.data.success) {
-//           const allQuestions = response.data.data.flatMap((quiz) =>
-//             quiz.questions.map((q) => ({
-//               id: q._id,
-//               quizId: quiz._id,
-//               questionText: q.questionText,
-//               college: quiz.University,
-//               subjectCode: quiz.Subject_code,
-//               category: quiz.category,
-//               options: q.options,
-//               correctAnswer:
-//                 q.options.find((option) => option.isCorrect)?.optionText ||
-//                 "No answer available",
-//             }))
-//           );
-//           setQuestions(allQuestions);
-//           const dynamicColleges = allQuestions.map((q) => q.college);
-//           setColleges([...new Set(dynamicColleges)]);
-//         } else {
-//           setError("No dynamic questions found.");
-//         }
-//       } catch (error) {
-//         setError("Error fetching dynamic questions. Please try again.");
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchDynamicQuestions();
-//   }, []);
-
-//   // Added effect for updating categories when subject code changes
-//   useEffect(() => {
-//     if (selectedSubjectCode) {
-//       const subjectQuestions = questions.filter(
-//         (q) =>
-//           q.college === selectedCollege && q.subjectCode === selectedSubjectCode
-//       );
-//       const availableCategories = [
-//         ...new Set(subjectQuestions.map((q) => q.category)),
-//       ];
-//       setCategories(availableCategories.filter(Boolean));
-//       setSelectedCategory(""); // Reset category when subject code changes
-//     } else {
-//       setCategories([]);
-//       setSelectedCategory("");
-//     }
-//   }, [selectedSubjectCode, selectedCollege, questions]);
-
-//   const handleCollegeChange = (college) => {
-//     setSelectedCollege(college);
-//     const filteredSubjectCodes = [
-//       ...new Set(
-//         questions.filter((q) => q.college === college).map((q) => q.subjectCode)
-//       ),
-//     ];
-//     setSubjectCodes(filteredSubjectCodes);
-//     setSelectedSubjectCode("");
-//     setSelectedCategory(""); // Reset category when college changes
-//     setFilteredQuestions([]);
-//   };
-
-//   const handleSubjectCodeChange = (subjectCode) => {
-//     setSelectedSubjectCode(subjectCode);
-//     const filtered = questions.filter(
-//       (q) =>
-//         q.college === selectedCollege &&
-//         q.subjectCode === subjectCode &&
-//         (!selectedCategory || q.category === selectedCategory) // Added category filter
-//     );
-//     setFilteredQuestions(filtered);
-//   };
-
-//   // Added handler for category selection
-//   const handleCategoryChange = (category) => {
-//     setSelectedCategory(category);
-//     const filtered = questions.filter(
-//       (q) =>
-//         q.college === selectedCollege &&
-//         q.subjectCode === selectedSubjectCode &&
-//         (!category || q.category === category)
-//     );
-//     setFilteredQuestions(filtered);
-//   };
-
-//   const handleEditClick = (question) => {
-//     const editQuestion = {
-//       ...question,
-//       correctOption: question.options.findIndex((opt) => opt.isCorrect),
-//     };
-//     setEditingQuestion(editQuestion);
-//     setIsEditModalOpen(true);
-//   };
-
-//   const handleEditSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true);
-
-//     try {
-//       const updatedQuestionData = {
-//         questionText: editingQuestion.questionText,
-//         options: editingQuestion.options.map((option, index) => ({
-//           optionText: option.optionText,
-//           isCorrect: index === parseInt(editingQuestion.correctOption),
-//         })),
-//       };
-
-//       await axios.put(
-//         `https://requin-quiz-backend.vercel.app/api/quiz/${editingQuestion.quizId}/question/${editingQuestion.id}`,
-//         updatedQuestionData,
-//         {
-//           withCredentials: true,
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }
-//       );
-
-//       const response = await axios.get(
-//         "https://requin-quiz-backend.vercel.app/api/quiz"
-//       );
-//       if (response.data.success) {
-//         const allQuestions = response.data.data.flatMap((quiz) =>
-//           quiz.questions.map((q) => ({
-//             id: q._id,
-//             quizId: quiz._id,
-//             questionText: q.questionText,
-//             college: quiz.University,
-//             subjectCode: quiz.Subject_code,
-//             category: quiz.category,
-//             options: q.options,
-//             correctAnswer:
-//               q.options.find((option) => option.isCorrect)?.optionText ||
-//               "No answer available",
-//           }))
-//         );
-//         setQuestions(allQuestions);
-
-//         const filtered = allQuestions.filter(
-//           (q) =>
-//             q.college === selectedCollege &&
-//             q.subjectCode === selectedSubjectCode &&
-//             (!selectedCategory || q.category === selectedCategory)
-//         );
-//         setFilteredQuestions(filtered);
-//       }
-
-//       setIsEditModalOpen(false);
-//       setEditingQuestion(null);
-//       alert("Question updated successfully!");
-//     } catch (error) {
-//       console.error("Error updating question:", error);
-//       alert("Failed to update question");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const handleQuestionTextChange = (value) => {
-//     setEditingQuestion({
-//       ...editingQuestion,
-//       questionText: value,
-//     });
-//   };
-
-//   const handleOptionChange = (optionIndex, value) => {
-//     const updatedOptions = [...editingQuestion.options];
-//     updatedOptions[optionIndex] = {
-//       ...updatedOptions[optionIndex],
-//       optionText: value,
-//     };
-//     setEditingQuestion({
-//       ...editingQuestion,
-//       options: updatedOptions,
-//     });
-//   };
-
-//   const handleDeleteClick = async (questionId, quizId) => {
-//     const confirmDelete = window.confirm(
-//       "Are you sure you want to delete this question?"
-//     );
-//     if (!confirmDelete) return;
-
-//     setLoading(true);
-//     try {
-//       await axios.delete(
-//         `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}/question/${questionId}`,
-//         {
-//           withCredentials: true,
-//         }
-//       );
-
-//       setQuestions((prevQuestions) =>
-//         prevQuestions.filter((q) => q.id !== questionId)
-//       );
-//       setFilteredQuestions((prevFiltered) =>
-//         prevFiltered.filter((q) => q.id !== questionId)
-//       );
-
-//       alert("Question deleted successfully!");
-//     } catch (error) {
-//       console.error("Error deleting question:", error);
-//       alert("Failed to delete question.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="flex min-h-screen">
-//       <Sidebar />
-//       <div className="flex-1 p-8 bg-gray-100">
-//         <h1 className="text-3xl font-bold mb-6 text-center">
-//           Dynamic Quiz Management
-//         </h1>
-
-//         {loading ? (
-//           <p className="text-center text-gray-500">Loading...</p>
-//         ) : error ? (
-//           <p className="text-center text-red-500">{error}</p>
-//         ) : (
-//           <div>
-//             <div className="mb-6 text-center">
-//               <h2 className="font-bold text-lg mb-4">
-//                 Universities with Dynamic Questions
-//               </h2>
-//               <div className="flex flex-wrap justify-center gap-4">
-//                 {colleges.map((college) => (
-//                   <button
-//                     key={college}
-//                     className={`px-4 py-2 border rounded-lg text-center w-auto max-w-sm ${
-//                       selectedCollege === college
-//                         ? "bg-blue-500 text-white"
-//                         : "bg-gray-100"
-//                     } hover:bg-blue-100 transition-colors`}
-//                     onClick={() => handleCollegeChange(college)}
-//                   >
-//                     {college}
-//                   </button>
-//                 ))}
-//               </div>
-//             </div>
-
-//             {selectedCollege && (
-//               <div className="mb-6 text-center">
-//                 <h2 className="font-bold text-lg mb-4">
-//                   Subject Codes for {selectedCollege}
-//                 </h2>
-//                 <div className="flex flex-wrap justify-center gap-4">
-//                   {subjectCodes.map((subjectCode) => (
-//                     <button
-//                       key={subjectCode}
-//                       className={`px-4 py-2 border rounded-lg text-center w-auto max-w-sm ${
-//                         selectedSubjectCode === subjectCode
-//                           ? "bg-blue-500 text-white"
-//                           : "bg-gray-100"
-//                       } hover:bg-blue-100 transition-colors`}
-//                       onClick={() => handleSubjectCodeChange(subjectCode)}
-//                     >
-//                       {subjectCode}
-//                     </button>
-//                   ))}
-//                 </div>
-//               </div>
-//             )}
-
-//             {/* Added Categories Section */}
-//             {selectedSubjectCode && categories.length > 0 && (
-//               <div className="mb-6 text-center">
-//                 <h2 className="font-bold text-lg mb-4">Categories</h2>
-//                 <div className="flex flex-wrap justify-center gap-4">
-//                   {categories.map((category) => (
-//                     <button
-//                       key={category}
-//                       className={`px-4 py-2 border rounded-lg text-center w-auto max-w-sm ${
-//                         selectedCategory === category
-//                           ? "bg-blue-500 text-white"
-//                           : "bg-gray-100"
-//                       } hover:bg-blue-100 transition-colors`}
-//                       onClick={() => handleCategoryChange(category)}
-//                     >
-//                       {category}
-//                     </button>
-//                   ))}
-//                 </div>
-//               </div>
-//             )}
-
-//             {selectedSubjectCode && filteredQuestions.length > 0 && (
-//               <div className="mb-6">
-//                 <h3 className="font-bold text-lg text-center">
-//                   Dynamic Questions
-//                 </h3>
-//                 <div className="space-y-6">
-//                   {filteredQuestions.map((question, index) => (
-//                     <div
-//                       key={index}
-//                       className="p-6 border border-gray-300 rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-200"
-//                     >
-//                       <div className="flex justify-between items-start mb-4">
-//                         <p
-//                           className="font-semibold text-lg"
-//                           dangerouslySetInnerHTML={{
-//                             __html: `Q${index + 1}: ${question.questionText}`,
-//                           }}
-//                         ></p>
-//                         <div className="flex space-x-2">
-//                           <button
-//                             onClick={() => handleEditClick(question)}
-//                             className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-//                           >
-//                             Edit
-//                           </button>
-//                           <button
-//                             onClick={() =>
-//                               handleDeleteClick(question.id, question.quizId)
-//                             }
-//                             className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-//                           >
-//                             Delete
-//                           </button>
-//                         </div>
-//                       </div>
-
-//                       <div className="space-y-2 mb-4">
-//                         {question.options.map((option, optionIndex) => (
-//                           <div
-//                             key={optionIndex}
-//                             className={`px-4 py-2 border rounded-md ${
-//                               option.isCorrect ? "bg-green-200" : "bg-gray-100"
-//                             } border-gray-300 text-gray-700`}
-//                             dangerouslySetInnerHTML={{
-//                               __html: option.optionText,
-//                             }}
-//                           ></div>
-//                         ))}
-//                       </div>
-
-//                       <p className="text-sm text-gray-500">
-//                         College: {question.college} | Subject Code:{" "}
-//                         {question.subjectCode}
-//                         {question.category &&
-//                           ` | Category: ${question.category}`}
-//                       </p>
-//                     </div>
-//                   ))}
-//                 </div>
-//               </div>
-//             )}
-//           </div>
-//         )}
-
-//         {isEditModalOpen && editingQuestion && (
-//           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-//             <div className="bg-white rounded-lg p-8 max-w-4xl w-full max-h-90vh overflow-y-auto">
-//               <h2 className="text-2xl font-bold mb-6">Edit Question</h2>
-//               <form onSubmit={handleEditSubmit} className="space-y-6">
-//                 <div>
-//                   <label className="block font-medium mb-2">
-//                     Question Text:
-//                   </label>
-//                   <ReactQuill
-//                     value={editingQuestion.questionText}
-//                     onChange={handleQuestionTextChange}
-//                     modules={modules}
-//                     className="bg-white mb-4"
-//                   />
-//                 </div>
-
-//                 <div className="space-y-4">
-//                   <label className="block font-medium">Options:</label>
-//                   {editingQuestion.options.map((option, index) => (
-//                     <div key={index}>
-//                       <ReactQuill
-//                         value={option.optionText}
-//                         onChange={(value) => handleOptionChange(index, value)}
-//                         modules={modules}
-//                         className="bg-white mb-2"
-//                       />
-//                     </div>
-//                   ))}
-//                 </div>
-
-//                 <div>
-//                   <label className="block font-medium mb-2">
-//                     Correct Option (0-3):
-//                   </label>
-//                   <input
-//                     type="number"
-//                     value={editingQuestion.correctOption}
-//                     onChange={(e) =>
-//                       setEditingQuestion({
-//                         ...editingQuestion,
-//                         correctOption: e.target.value,
-//                       })
-//                     }
-//                     min="0"
-//                     max="3"
-//                     required
-//                     className="w-full p-2 border rounded"
-//                   />
-//                 </div>
-
-//                 <div className="flex justify-end space-x-4">
-//                   <button
-//                     type="button"
-//                     onClick={() => setIsEditModalOpen(false)}
-//                     className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-//                   >
-//                     Cancel
-//                   </button>
-//                   <button
-//                     type="submit"
-//                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-//                   >
-//                     Save Changes
-//                   </button>
-//                 </div>
-//               </form>
-//             </div>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default UniversitySubjectPage;
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
@@ -2543,8 +2062,16 @@ import "react-quill/dist/quill.snow.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
+
 const UniversitySubjectPage = () => {
-  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = Cookies.get("token"); // Get token from cookies
+    if (!token) {
+      navigate("/admin-login"); // Redirect to login if no token
+    }
+  }, [navigate]);
   const [questions, setQuestions] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [subjectCodes, setSubjectCodes] = useState([]);
@@ -2800,86 +2327,204 @@ const UniversitySubjectPage = () => {
           <p className="text-center text-red-500">{error}</p>
         ) : (
           <div>
-            {/* [Existing render code remains the same until edit modal] */}
-
-            {isEditModalOpen && editingQuestion && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-                <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-xl relative">
-                  <button 
-                    onClick={() => setIsEditModalOpen(false)}
-                    className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+            <div className="mb-6 text-center">
+              <h2 className="font-bold text-lg mb-4">
+                Universities with Dynamic Questions
+              </h2>
+              <div className="flex flex-wrap justify-center gap-4">
+                {colleges.map((college) => (
+                  <button
+                    key={college}
+                    className={`px-4 py-2 border rounded-lg text-center w-auto max-w-sm ${
+                      selectedCollege === college
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-100"
+                    } hover:bg-blue-100 transition-colors`}
+                    onClick={() => handleCollegeChange(college)}
                   >
-                    ✕
+                    {college}
                   </button>
-                  <h2 className="text-2xl font-bold mb-6">Edit Question</h2>
-                  <form onSubmit={handleEditSubmit} className="space-y-4">
-                    <div>
-                      <label className="block font-medium mb-2">
-                        Question Text:
-                      </label>
-                      <ReactQuill
-                        value={editingQuestion.questionText}
-                        onChange={handleQuestionTextChange}
-                        modules={modules}
-                        className="bg-white mb-4"
-                        style={{ height: '150px' }}
-                      />
-                    </div>
+                ))}
+              </div>
+            </div>
 
-                    <div className="space-y-4">
-                      <label className="block font-medium">Options:</label>
-                      {editingQuestion.options.map((option, index) => (
-                        <div key={index}>
-                          <ReactQuill
-                            value={option.optionText}
-                            onChange={(value) => handleOptionChange(index, value)}
-                            modules={modules}
-                            className="bg-white mb-2"
-                            style={{ height: '100px' }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-
-                    <div>
-                      <label className="block font-medium mb-2">
-                        Correct Option (0-3):
-                      </label>
-                      <input
-                        type="number"
-                        value={editingQuestion.correctOption}
-                        onChange={(e) =>
-                          setEditingQuestion({
-                            ...editingQuestion,
-                            correctOption: e.target.value,
-                          })
-                        }
-                        min="0"
-                        max="3"
-                        required
-                        className="w-full p-2 border rounded"
-                      />
-                    </div>
-
-                    <div className="flex justify-end space-x-4 mt-4">
-                      <button
-                        type="button"
-                        onClick={() => setIsEditModalOpen(false)}
-                        className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="submit"
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                      >
-                        Save Changes
-                      </button>
-                    </div>
-                  </form>
+            {selectedCollege && (
+              <div className="mb-6 text-center">
+                <h2 className="font-bold text-lg mb-4">
+                  Subject Codes for {selectedCollege}
+                </h2>
+                <div className="flex flex-wrap justify-center gap-4">
+                  {subjectCodes.map((subjectCode) => (
+                    <button
+                      key={subjectCode}
+                      className={`px-4 py-2 border rounded-lg text-center w-auto max-w-sm ${
+                        selectedSubjectCode === subjectCode
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-100"
+                      } hover:bg-blue-100 transition-colors`}
+                      onClick={() => handleSubjectCodeChange(subjectCode)}
+                    >
+                      {subjectCode}
+                    </button>
+                  ))}
                 </div>
               </div>
             )}
+
+            {/* Added Categories Section */}
+            {selectedSubjectCode && categories.length > 0 && (
+              <div className="mb-6 text-center">
+                <h2 className="font-bold text-lg mb-4">Categories</h2>
+                <div className="flex flex-wrap justify-center gap-4">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      className={`px-4 py-2 border rounded-lg text-center w-auto max-w-sm ${
+                        selectedCategory === category
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-100"
+                      } hover:bg-blue-100 transition-colors`}
+                      onClick={() => handleCategoryChange(category)}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {selectedSubjectCode && filteredQuestions.length > 0 && (
+              <div className="mb-6">
+                <h3 className="font-bold text-lg text-center">
+                  Dynamic Questions
+                </h3>
+                <div className="space-y-6">
+                  {filteredQuestions.map((question, index) => (
+                    <div
+                      key={index}
+                      className="p-6 border border-gray-300 rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-200"
+                    >
+                      <div className="flex justify-between items-start mb-4">
+                        <p
+                          className="font-semibold text-lg"
+                          dangerouslySetInnerHTML={{
+                            __html: `Q${index + 1}: ${question.questionText}`,
+                          }}
+                        ></p>
+                        <div className="flex space-x-2">
+                          <button
+                            onClick={() => handleEditClick(question)}
+                            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleDeleteClick(question.id, question.quizId)
+                            }
+                            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2 mb-4">
+                        {question.options.map((option, optionIndex) => (
+                          <div
+                            key={optionIndex}
+                            className={`px-4 py-2 border rounded-md ${
+                              option.isCorrect ? "bg-green-200" : "bg-gray-100"
+                            } border-gray-300 text-gray-700`}
+                            dangerouslySetInnerHTML={{
+                              __html: option.optionText,
+                            }}
+                          ></div>
+                        ))}
+                      </div>
+
+                      <p className="text-sm text-gray-500">
+                        College: {question.college} | Subject Code:{" "}
+                        {question.subjectCode}
+                        {question.category &&
+                          ` | Category: ${question.category}`}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {isEditModalOpen && editingQuestion && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg p-8 max-w-4xl w-full max-h-90vh overflow-y-auto">
+              <h2 className="text-2xl font-bold mb-6">Edit Question</h2>
+              <form onSubmit={handleEditSubmit} className="space-y-6">
+                <div>
+                  <label className="block font-medium mb-2">
+                    Question Text:
+                  </label>
+                  <ReactQuill
+                    value={editingQuestion.questionText}
+                    onChange={handleQuestionTextChange}
+                    modules={modules}
+                    className="bg-white mb-4"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <label className="block font-medium">Options:</label>
+                  {editingQuestion.options.map((option, index) => (
+                    <div key={index}>
+                      <ReactQuill
+                        value={option.optionText}
+                        onChange={(value) => handleOptionChange(index, value)}
+                        modules={modules}
+                        className="bg-white mb-2"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <label className="block font-medium mb-2">
+                    Correct Option (0-3):
+                  </label>
+                  <input
+                    type="number"
+                    value={editingQuestion.correctOption}
+                    onChange={(e) =>
+                      setEditingQuestion({
+                        ...editingQuestion,
+                        correctOption: e.target.value,
+                      })
+                    }
+                    min="0"
+                    max="3"
+                    required
+                    className="w-full p-2 border rounded"
+                  />
+                </div>
+
+                <div className="flex justify-end space-x-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditModalOpen(false)}
+                    className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         )}
       </div>
