@@ -2284,7 +2284,7 @@ const UniversitySubjectPage = () => {
     setLoading(true);
     try {
       await axios.delete(
-        `https://requin-quiz-backend.vercel.app/api/quiz/${quizId}/question/${questionId}`,
+        `https://requin-quiz-backend.vercel.app/api/quiz/dynamic/${quizId}/${questionId}`,
         {
           withCredentials: true,
         }
