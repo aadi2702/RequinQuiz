@@ -22,7 +22,7 @@ import upload from "../middlewares/multerMiddleware.js";
 import authMiddleware from "../middlewares/authMiddleware.js"; // Import auth middleware (if required)
 // import manualEntry from "../controllers/manualController.js";
 
-router.post("/", authMiddleware, createQuiz);
+router.post("/", createQuiz);
 router.get("/", getAllQuizzes);
 // router.get("/:id", authMiddleware, getSingleQuiz);
 router.put("/:id", authMiddleware, updateQuiz);
