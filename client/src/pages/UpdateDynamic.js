@@ -2544,15 +2544,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 const UniversitySubjectPage = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = Cookies.get("token"); // Get token from cookies
-    if (!token) {
-      navigate("/admin-login"); // Redirect to login if no token
-    }
-  }, [navigate]);
-
+  
   const [questions, setQuestions] = useState([]);
   const [colleges, setColleges] = useState([]);
   const [subjectCodes, setSubjectCodes] = useState([]);
