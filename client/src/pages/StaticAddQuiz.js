@@ -1120,7 +1120,7 @@ import { useNavigate } from "react-router-dom";
 // Register TableUI for Quill
 Quill.register("modules/tableUI", TableUI);
 
-
+const AddStaticQuiz =() =>{
   
   const [quizType] = useState("static"); // Only static
   const [university, setUniversity] = useState("");
