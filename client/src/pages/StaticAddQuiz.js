@@ -1120,15 +1120,7 @@ import { useNavigate } from "react-router-dom";
 // Register TableUI for Quill
 Quill.register("modules/tableUI", TableUI);
 
-const AddStaticQuiz = () => {
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = Cookies.get("token"); // Get token from cookies
-    if (!token) {
-      navigate("/admin-login"); // Redirect to login if no token
-    }
-  }, [navigate]);
   
   const [quizType] = useState("static"); // Only static
   const [university, setUniversity] = useState("");
