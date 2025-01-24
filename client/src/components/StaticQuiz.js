@@ -5237,6 +5237,8 @@ const CombinedQuizPage = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showFilters, setShowFilters] = useState(false);
+
 
   useEffect(() => {
     const fetchDynamicQuestions = async () => {
@@ -5412,8 +5414,8 @@ const CombinedQuizPage = () => {
   );
 
   return (
-    <div className="mx-auto" style={{ width: "80%" }}>
-      <div className="container mx-auto px-4 py-8">
+    <div className="mx-auto px-4 md:px-6 py-8" style={{ width: "100%" }}>
+      <div className="container mx-auto">
         <h1 className="text-2xl font-bold mb-6 text-center">
           Questions & Answers
         </h1>
@@ -5443,9 +5445,30 @@ const CombinedQuizPage = () => {
           </div>
         </div>
 
-        <div className="flex gap-6">
+        {/* Mobile Filters Toggle Button */}
+        {selectedCollege && (
+          <div className="md:hidden text-center mb-4">
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            >
+              {showFilters ? "Hide Subjects" : "Select Subject"}
+            </button>
+          </div>
+        )}
+
+        <div className="flex flex-col md:flex-row gap-6">
           {selectedCollege && (
-            <div className="w-1/4 space-y-4">
+            <div
+              className={`
+              ${showFilters ? "block" : "hidden"} 
+              md:block md:w-1/4 space-y-4 
+              bg-white md:bg-transparent 
+              p-4 md:p-0 
+              rounded-lg md:rounded-none 
+              shadow-lg md:shadow-none
+            `}
+            >
               <div>
                 <h2 className="font-bold text-base mb-3">Subject Codes</h2>
                 <div className="space-y-2">
@@ -5494,7 +5517,12 @@ const CombinedQuizPage = () => {
             </div>
           )}
 
-          <div className={`${selectedCollege ? "w-3/4" : "w-full"} space-y-4`}>
+          <div
+            className={`
+            ${selectedCollege ? "md:w-3/4" : "w-full"} 
+            space-y-4 w-full
+          `}
+          >
             {loading ? (
               <p className="text-center text-gray-500">Loading questions...</p>
             ) : error ? (
@@ -5565,7 +5593,6 @@ const CombinedQuizPage = () => {
               )
             ) : shouldShowQuestions ? (
               <div className="space-y-6">
-                {/* Dynamic Questions Section */}
                 {filteredQuestions.length > 0 && (
                   <div className="space-y-4">
                     <h2 className="text-xl font-bold">Dynamic Questions</h2>
@@ -5602,45 +5629,41 @@ const CombinedQuizPage = () => {
                   </div>
                 )}
 
-                {/* Static Questions Section - Updated Styling */}
                 {filteredStaticQuestions.length > 0 && (
-                  <div className="mt-6">
-                    {/* <h2 className="text-xl font-bold mb-4">Static Questions</h2> */}
-                    <div className="overflow-x-auto rounded-lg shadow-lg border-2 border-gray-200">
-                      <table className="min-w-full table-auto">
-                        <thead>
-                          <tr className="bg-gray-800 text-white">
-                            <th className="px-6 py-4 text-left text-sm font-semibold tracking-wider border-b-2 border-gray-700 w-1/2">
-                              Question
-                            </th>
-                            <th className="px-6 py-4 text-left text-sm font-semibold tracking-wider border-b-2 border-gray-700 w-1/2">
-                              Answer
-                            </th>
+                  <div className="mt-6 overflow-x-auto">
+                    <table className="min-w-full table-auto">
+                      <thead>
+                        <tr className="bg-gray-800 text-white">
+                          <th className="px-4 py-2 md:px-6 md:py-4 text-left text-sm font-semibold tracking-wider border-b-2 border-gray-700 w-1/2">
+                            Question
+                          </th>
+                          <th className="px-4 py-2 md:px-6 md:py-4 text-left text-sm font-semibold tracking-wider border-b-2 border-gray-700 w-1/2">
+                            Answer
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {filteredStaticQuestions.map((question, index) => (
+                          <tr
+                            key={index}
+                            className="hover:bg-gray-50 transition-colors duration-200"
+                          >
+                            <td className="px-4 py-2 md:px-6 md:py-4 text-sm text-gray-800 border-r border-gray-200">
+                              <div className="font-medium">
+                                <QuestionContent
+                                  content={question.questionText}
+                                />
+                              </div>
+                            </td>
+                            <td className="px-4 py-2 md:px-6 md:py-4 text-sm text-gray-800">
+                              <div className="whitespace-pre-wrap">
+                                <QuestionContent content={question.answer} />
+                              </div>
+                            </td>
                           </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                          {filteredStaticQuestions.map((question, index) => (
-                            <tr
-                              key={index}
-                              className="hover:bg-gray-50 transition-colors duration-200"
-                            >
-                              <td className="px-6 py-4 text-sm text-gray-800 border-r border-gray-200">
-                                <div className="font-medium">
-                                  <QuestionContent
-                                    content={question.questionText}
-                                  />
-                                </div>
-                              </td>
-                              <td className="px-6 py-4 text-sm text-gray-800">
-                                <div className="whitespace-pre-wrap">
-                                  <QuestionContent content={question.answer} />
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )}
               </div>
